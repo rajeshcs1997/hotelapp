@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Burj Al Arab",
+    "price": "10",
+    "image": "https://cf.bstatic.com/xdata/images/hotel/square200/229942053.webp?k=260cfaf3efea392e46fdd5c4ee819f7177582aa3b5df04b0aacce2eeeb830f88&o=",
+    "propertyType": "Apartment",
+    "facility": "basic",
+    "description": "An architectural wonder and one of the most famous hotels in the world, the Burj Al Arab is a Dubai icon. The third-tallest hotel on Earth, it sits on its own private island and is shaped like a giant ship’s sail.",
+    "rating":"4"
+  },
+  {
+    "id": 2,
+    "name": "The Plaza Hotel",
+    "price": "60",
+    "image": "https://cf.bstatic.com/xdata/images/hotel/square200/267381816.webp?k=13ed7d89c82dac664cf533a412d657fdd8d370050c7bd6482325aa38805c904d&o=",
+    "propertyType": "guest",
+    "facility": "advanced",
+    "description": "New York’s most famous hotel is a French-style historic landmark adjacent Central Park that opened in 1907 and was quickly dubbed the “greatest hotel in the world.",
+    "rating":"3"
+  },
+  {
+    "id": 3,
+    "name": "Marina Bay Sands",
+    "price": "20",
+    "image": "https://cf.bstatic.com/xdata/images/hotel/square200/229940652.webp?k=6b085615cccb26bcf11f18a6999785488fc066158a030153a8bddb3b2f8269ca&o=",
+    "propertyType": "holiday",
+    "facility": "medium",
+    "description": "A symbol of Singapore’s crazy-rich luxury offerings, the Marina Bay Sands is a famous hotel that’s become best known for its massive rooftop infinity pool, which connects the hotel’s three buildings and overlooks the Marina Bay.",
+    "rating":"5"
+  },
+  {
+    "id": 4,
+    "name": "Brown’s Hotel",
+    "price": "70",
+    "image": "http://photos.hotelbeds.com/giata/00/004200/004200a_hb_ro_006.jpg",
+    "propertyType": "guest",
+    "facility": "basic",
+    "description": "Famous hotels don’t get much more “fit for a queen” than the five-star luxury hotel where Queen Victoria took her tea: Brown’s Hotel in London’s Mayfair district. Instagram-worthy interiors (hello, marble soaking tubs) ",
+    "rating":"4"
+  },
+  {
+    "id": 5,
+    "name": "Atlantis Bahamas",
+    "price": "90",
+    "image": "https://cf.bstatic.com/xdata/images/hotel/square200/288034058.webp?k=0833e3f6c5ea027badaca8869862f58f94268caa966ac7868b326ae544dca18a&o=",
+    "propertyType": "Apartment",
+    "facility": "basic",
+    "description": "Famous hotels don’t get much more “fit for a queen” than the five-star luxury hotel where Queen Victoria took her tea: Brown’s Hotel in London’s Mayfair district. Instagram-worthy interiors (hello, marble soaking tubs) ",
+    "rating":"5"
+  },
+  {
+    "id": 6,
+    "name": "Hills Hotel",
+    "price": "65",
+    "image": "https://cf.bstatic.com/xdata/images/hotel/square200/127254291.webp?k=b2574fcaf6369d4044b421f16ccdc9d4f070a2e01d8e98b12afbafbab99139ca&o=",
+    "propertyType": "holiday",
+    "facility": "basic",
+    "description": "Want to sleep where Marilyn Monroe once lived? Dubbed the Pink Palace, the retro-luxe Beverly Hills Hotel on historic Sunset Boulevard has served as a meeting spot and makeshift home to a slew of movie stars like Monroe while they were working on set in Los Angeles.",
+    "rating":"3"
+  },
+  {
+    "id": 7,
+    "name": "Copacabana Palace",
+    "price": "50",
+    "image": "https://cf.bstatic.com/xdata/images/hotel/square200/234890162.webp?k=9851b545831e5e33fb3df6bc05f843bb0575d31ea421873dea895c2848e2a61d&o=",
+    "propertyType": "guest",
+    "facility": "advanced",
+    "description": "Rio de Janeiro’s most famous hotel, the Copacabana Palace is known for its location on one of the world’s best beaches. The property’s art-deco style dates back to the 1920s",
+    "rating":"4"
+  },
+  {
+    "id": 8,
+    "name": "The Brando",
+    "price": "30",
+    "image": "https://cf.bstatic.com/xdata/images/hotel/square200/49191135.webp?k=c04eb2a2e54beb4cde75455496ad96129582c4e356a50ab7381ab662bb341402&o=",
+    "propertyType": "Apartment",
+    "facility": "basic",
+    "description": "If visiting the far-off French Polynesian islands of Tahiti aren’t enough of a status symbol for you, staying at world-famous hotel on a private island should be.",
+    "rating":"3"
+  }
+]

@@ -1,0 +1,11 @@
+.leftside {
+  width: 30%;
+  float:left;
+  height: auto;
+}
+
+.rightside {
+  width: 70%;
+  float:right;
+  height: auto;
+}
