@@ -5,6 +5,8 @@
 }
 
 .rightside {
+  display: flex;
+  flex-wrap: wrap;
   width: 70%;
   float:right;
   height: auto;

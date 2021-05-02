@@ -21,10 +21,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Hotelcard = () => {
+const Hotelcard = ({search, ratingstate, value}) => {
   const classes = useStyles();
-  const [ hoteldata, setHoteldata ] = useState("");
+  const [ hoteldata, setHoteldata ] = useState([]);
   useEffect( () => {
+    getData()
+  }, []);
+
+  useEffect( () => {
+    if(search){
+      const filterHotel = hoteldata.filter(hotel => {
+        return hotel.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+      });
+      setHoteldata(filterHotel)
+    }else{
+      getData()
+    }
+  }, [search]);
+
+   useEffect( () => {
+    if(value != [0, 100]){
+      const filterHotel = hoteldata.filter(val => val.price > value[0] && val.price < value[1])
+      setHoteldata(filterHotel)
+    }
+    else{
+      getData()
+    }
+   }, [value]);
+
+  const getData = ()=>{
     fetch(`${process.env.PUBLIC_URL}/hoteldata.json`,{
       headers : { 
         'Content-Type': 'application/json',
@@ -34,11 +59,11 @@ const Hotelcard = () => {
       .then(response => response.json())
       .then(data => setHoteldata(data))
       .catch( err => console.log("error",err))
-  }, []);
-  console.log("hjd",hoteldata)
+  }
+
   return (
     <>
-      { hoteldata && hoteldata.map((val, res) =>
+      {hoteldata && hoteldata.map((val, res) =>
         <div style={{margin: "20px"}}>
           <Card className={classes.root}>
           <div style={{display: "flex"}}>

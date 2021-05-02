@@ -17,9 +17,9 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-const Filter = () => {
+const Filter = ({onPrice, price}) => {
   const classes = useStyles();
-  const [value, setValue] = useState([20, 37]);
+  const [value, setValue] = useState([0, 100]);
   const [ratingstate, setRatingState] = useState({
     checkedfive: false,
     checkedfour: false,
@@ -33,21 +33,24 @@ const Filter = () => {
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
+    price(newValue)
   };
   const handleRatingChange = (event) => {
     setRatingState({ ...ratingstate, [event.target.name]: event.target.checked });
+    onPrice({ ...ratingstate, [event.target.name]: event.target.checked })
   };
 
   const handlePropertyChange = (event) => {
     setPropertyState({ ...propertystate, [event.target.name]: event.target.checked });
   };
+
   return (
     <>
       <div style={{margin: "30px"}}>
         <h3>Set Filters</h3>
         <div className={classes.root}>
           <Typography id="range-slider" gutterBottom>
-            Temperature range
+            Price
           </Typography>
           <Slider
             value={value}

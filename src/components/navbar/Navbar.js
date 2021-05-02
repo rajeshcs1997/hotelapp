@@ -78,10 +78,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ({onSearch}) => {
 	const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [search, setSearch] = useState('');
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -183,7 +184,13 @@ const Navbar = () => {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              value={search}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(e)=>{
+                e.preventDefault()
+                setSearch(e.target.value)
+                onSearch(e.target.value)
+              }}
             />
           </div>
           <div className={classes.grow} />
