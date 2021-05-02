@@ -25,6 +25,8 @@ const Hotelcard = ({search, ratingvalue, value, propertyvalue}) => {
   const classes = useStyles();
   const [ hoteldata, setHoteldata ] = useState([]);
   const [ newData, setnewData ] = useState([]);
+  const [ afterratingData, setAfterratingdata ] = useState([]);
+  const [ afterpropertyData, setAfterpropertydata ] = useState([]);
   useEffect( () => {
     getData()
   }, []);
@@ -52,17 +54,18 @@ const Hotelcard = ({search, ratingvalue, value, propertyvalue}) => {
 
   useEffect( () => {
     if(ratingvalue != ""){
-      const filterHotel = hoteldata.filter(val => val.rating === ratingvalue)
-      setHoteldata(filterHotel)
+      const filterHotel = newData.length == 0 ? hoteldata.filter(val => val.rating === ratingvalue) : newData.filter(val => val.rating === ratingvalue)
+      setAfterratingdata(filterHotel)
+      console.log("filratinghsdgjsk====",filterHotel)
     }else{
       getData()
     }
   }, [ratingvalue]);
 
   useEffect( () => {
-    if(propertyvalue){
+    if(propertyvalue != ""){
       const filterHotel = hoteldata.filter(val => val.propertyType.toLowerCase() === propertyvalue.toLowerCase())
-      setHoteldata(filterHotel)
+      setAfterpropertydata(filterHotel)
     }else{
       getData()
     }
@@ -81,12 +84,19 @@ const Hotelcard = ({search, ratingvalue, value, propertyvalue}) => {
    }
 
    let hotels =[]
-   if(value[0]===0 && value[1]===100){
-    hotels = hoteldata
-   }else{
+   if(value[0]!==0 || value[1]!==100){
     hotels = newData
    }
-   console.log("ratingjhksd appjs====",propertyvalue)
+   else if(afterratingData.length !==0){
+			hotels = afterratingData
+   }
+   else if(afterpropertyData.length !==0){
+			hotels = afterpropertyData
+   }
+   else{
+    hotels = hoteldata
+   }
+   console.log(hoteldata,"======")
   return (
     <>
       {hotels && hotels.map((val, res) =>
