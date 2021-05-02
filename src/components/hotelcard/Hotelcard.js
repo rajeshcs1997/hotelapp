@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Hotelcard = ({search, ratingstate, value}) => {
+const Hotelcard = ({search, ratingvalue, value, propertyvalue}) => {
   const classes = useStyles();
   const [ hoteldata, setHoteldata ] = useState([]);
   const [ newData, setnewData ] = useState([]);
@@ -40,7 +40,7 @@ const Hotelcard = ({search, ratingstate, value}) => {
     }
   }, [search]);
 
-   useEffect( () => {
+  useEffect( () => {
     if(value != [0, 100]){
       const filterHotel = hoteldata.filter(val => val.price > value[0] && val.price < value[1])
       setnewData(filterHotel)
@@ -48,7 +48,25 @@ const Hotelcard = ({search, ratingstate, value}) => {
     else{
       getData()
     }
-   }, [value]);
+  }, [value]);
+
+  useEffect( () => {
+    if(ratingvalue != ""){
+      const filterHotel = hoteldata.filter(val => val.rating === ratingvalue)
+      setHoteldata(filterHotel)
+    }else{
+      getData()
+    }
+  }, [ratingvalue]);
+
+  useEffect( () => {
+    if(propertyvalue){
+      const filterHotel = hoteldata.filter(val => val.propertyType.toLowerCase() === propertyvalue.toLowerCase())
+      setHoteldata(filterHotel)
+    }else{
+      getData()
+    }
+  }, [propertyvalue]);
 
   const getData = ()=>{
     fetch(`${process.env.PUBLIC_URL}/hoteldata.json`,{
@@ -68,7 +86,7 @@ const Hotelcard = ({search, ratingstate, value}) => {
    }else{
     hotels = newData
    }
-
+   console.log("ratingjhksd appjs====",propertyvalue)
   return (
     <>
       {hotels && hotels.map((val, res) =>

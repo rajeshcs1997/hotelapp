@@ -4,8 +4,11 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = makeStyles({
   root: {
@@ -13,35 +16,23 @@ const useStyles = makeStyles({
   },
 });
 
-function valuetext(value) {
-  return `${value}°C`;
-}
-
-const Filter = ({onPrice, price}) => {
+const Filter = ({onPrice, price, rating, property}) => {
   const classes = useStyles();
   const [value, setValue] = useState([0, 100]);
-  const [ratingstate, setRatingState] = useState({
-    checkedfive: false,
-    checkedfour: false,
-    checkedthree: false,
-  });
-  const [propertystate, setPropertyState] = useState({
-    checkedapartment: false,
-    checkedholiday: false,
-    checkedguest: false,
-  });
+  const [ratingvalue, setRatingvalue] = useState('');
+  const [propertyvalue, setPropertyvalue] = useState ('')
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
     price(newValue)
   };
   const handleRatingChange = (event) => {
-    setRatingState({ ...ratingstate, [event.target.name]: event.target.checked });
-    onPrice({ ...ratingstate, [event.target.name]: event.target.checked })
+    setRatingvalue(event.target.value);
+    rating(event.target.value)
   };
-
   const handlePropertyChange = (event) => {
-    setPropertyState({ ...propertystate, [event.target.name]: event.target.checked });
+    setPropertyvalue(event.target.value)
+    property(event.target.value)
   };
 
   return (
@@ -57,7 +48,6 @@ const Filter = ({onPrice, price}) => {
             onChange={handleSliderChange}
             valueLabelDisplay="auto"
             aria-labelledby="range-slider"
-            getAriaValueText={valuetext}
           />
         </div>
         <br/>
@@ -65,86 +55,26 @@ const Filter = ({onPrice, price}) => {
           <Typography id="checkbox" gutterBottom>
             Start Category
           </Typography>
-          <FormGroup colomn>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={ratingstate.checkedfive}
-                onChange={handleRatingChange}
-                name="checkedfive"
-                color="primary"
-                aria-labelledby="checkbox"
-              />
-            }
-            label="five"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={ratingstate.checkedfour}
-                onChange={handleRatingChange}
-                name="checkedfour"
-                color="primary"
-                aria-labelledby="checkbox"
-              />
-            }
-            label="four"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox 
-                checked={ratingstate.checkedthree}
-                onChange={handleRatingChange}
-                name="checkedthree"
-                color="primary"
-                aria-labelledby="checkbox"
-              />
-            }
-            label="three" />
-          </FormGroup>
+          <FormControl component="fieldset">
+            <RadioGroup aria-label="star Category" name="rating" value={ratingvalue} onChange={handleRatingChange}>
+              <FormControlLabel value="5" control={<Radio color="primary"/>} label="Five" />
+              <FormControlLabel value="4" control={<Radio color="primary"/>} label="Four" />
+              <FormControlLabel value="3" control={<Radio color="primary"/>} label="Three" />
+            </RadioGroup>
+          </FormControl>
         </div>
         <br />
         <div>
           <Typography id="checkboxproperty" gutterBottom>
             Property Type
           </Typography>
-          <FormGroup colomn>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={propertystate.checkedapartment}
-                onChange={handlePropertyChange}
-                name="checkedapartment"
-                color="primary"
-                aria-labelledby="checkboxproperty"
-              />
-            }
-            label="Apartment"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={propertystate.checkedholiday}
-                onChange={handlePropertyChange}
-                name="checkedholiday"
-                color="primary"
-                aria-labelledby="checkboxproperty"
-              />
-            }
-            label="Holiday"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox 
-                checked={propertystate.checkedguest}
-                onChange={handlePropertyChange}
-                name="checkedguest"
-                color="primary"
-                aria-labelledby="checkboxproperty"
-              />
-            }
-            label="Guest" />
-          </FormGroup>
+          <FormControl component="fieldset">
+            <RadioGroup aria-label="star Category" name="rating" value={propertyvalue} onChange={handlePropertyChange}>
+              <FormControlLabel value="Apartment" control={<Radio color="primary"/>} label="Apartment" />
+              <FormControlLabel value="Holiday" control={<Radio color="primary"/>} label="Holiday" />
+              <FormControlLabel value="Guest" control={<Radio color="primary"/>} label="Guest" />
+            </RadioGroup>
+          </FormControl>
         </div>
       </div>
     </>
