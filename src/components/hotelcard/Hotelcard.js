@@ -63,7 +63,7 @@ const Hotelcard = ({search, ratingstate, value}) => {
    }
 
    let hotels =[]
-   if(value === [0, 100] || !value){
+   if(value[0]===0 && value[1]===100){
     hotels = hoteldata
    }else{
     hotels = newData
