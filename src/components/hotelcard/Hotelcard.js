@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const Hotelcard = ({search, ratingstate, value}) => {
   const classes = useStyles();
   const [ hoteldata, setHoteldata ] = useState([]);
+  const [ newData, setnewData ] = useState([]);
   useEffect( () => {
     getData()
   }, []);
@@ -42,7 +43,7 @@ const Hotelcard = ({search, ratingstate, value}) => {
    useEffect( () => {
     if(value != [0, 100]){
       const filterHotel = hoteldata.filter(val => val.price > value[0] && val.price < value[1])
-      setHoteldata(filterHotel)
+      setnewData(filterHotel)
     }
     else{
       getData()
@@ -59,11 +60,18 @@ const Hotelcard = ({search, ratingstate, value}) => {
       .then(response => response.json())
       .then(data => setHoteldata(data))
       .catch( err => console.log("error",err))
-  }
+   }
+
+   let hotels =[]
+   if(value === [0, 100] || !value){
+    hotels = hoteldata
+   }else{
+    hotels = newData
+   }
 
   return (
     <>
-      {hoteldata && hoteldata.map((val, res) =>
+      {hotels && hotels.map((val, res) =>
         <div style={{margin: "20px"}}>
           <Card className={classes.root}>
           <div style={{display: "flex"}}>
