@@ -54,7 +54,7 @@ const Hotelcard = ({search, ratingvalue, value, propertyvalue}) => {
 
   useEffect( () => {
     if(ratingvalue != ""){
-      const filterHotel = newData.length == 0 ? hoteldata.filter(val => val.rating === ratingvalue) : newData.filter(val => val.rating === ratingvalue)
+      const filterHotel = newData.length == 0 ? hoteldata.filter(val => val.rating == ratingvalue) : newData.filter(val => val.rating == ratingvalue)
       setAfterratingdata(filterHotel)
       console.log("filratinghsdgjsk====",filterHotel)
     }else{
@@ -64,7 +64,8 @@ const Hotelcard = ({search, ratingvalue, value, propertyvalue}) => {
 
   useEffect( () => {
     if(propertyvalue != ""){
-      const filterHotel = hoteldata.filter(val => val.propertyType.toLowerCase() === propertyvalue.toLowerCase())
+      //const filterHotel = hoteldata.filter(val => val.propertyType.toLowerCase() === propertyvalue.toLowerCase())
+      const filterHotel = afterratingData.length !== 0 ? afterratingData.filter(val => val.propertyType.toLowerCase() === propertyvalue.toLowerCase()) : newData.length !==0 ? newData.filter(val => val.propertyType.toLowerCase() === propertyvalue.toLowerCase()) : hoteldata.filter(val => val.propertyType.toLowerCase() === propertyvalue.toLowerCase())
       setAfterpropertydata(filterHotel)
     }else{
       getData()
@@ -86,9 +87,18 @@ const Hotelcard = ({search, ratingvalue, value, propertyvalue}) => {
    let hotels =[]
    if(value[0]!==0 || value[1]!==100){
     hotels = newData
+    if(afterratingData.length !==0){
+			hotels = afterratingData
+   	}
+   	if(afterpropertyData.length !==0){
+			hotels = afterpropertyData
+   }
    }
    else if(afterratingData.length !==0){
 			hotels = afterratingData
+			if(afterpropertyData.length !==0){
+			hotels = afterpropertyData
+   		}
    }
    else if(afterpropertyData.length !==0){
 			hotels = afterpropertyData
@@ -96,7 +106,7 @@ const Hotelcard = ({search, ratingvalue, value, propertyvalue}) => {
    else{
     hotels = hoteldata
    }
-   console.log(hoteldata,"======")
+   console.log(afterratingData,"======")
   return (
     <>
       {hotels && hotels.map((val, res) =>

@@ -12,7 +12,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = makeStyles({
   root: {
-    width: 300,
+    //width: 300,
   },
 });
 
